@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yulong Zhao</title>
-    <meta name="description" content="Yulong Zhao, Statistics PhD student at the University of Arizona. Statistical modeling for sequential behavioral data, interpretable high-dimensional methods, and latent variable models.">
+    <meta name="description" content="Yulong Zhao, Statistics PhD student at the University of Arizona. Interpretable and deployable models for user event sequences: time-aware regression, real-time risk scoring, latent-state models, and time-series forecasting.">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -13,7 +13,7 @@
       <nav aria-label="Primary navigation">
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
-        <a href="#presentation">Presentation</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -25,10 +25,10 @@
           <h1>Yulong Zhao</h1>
           <p class="role">Statistics PhD Student</p>
           <p class="summary">
-            I work on statistical modeling methods for sequential behavioral data,
-            interpretable high-dimensional models, latent variable methods, and time-varying
-            effects. My research connects statistical methodology with applications
-            in behavioral data, prediction and evaluation problems, and scientific time series.
+            I build interpretable and deployable models for user event sequences: which actions
+            matter and when, how to flag users at risk in real time without too many false alarms,
+            and what hidden traits and states drive behavior. I also work on time-series forecasting
+            and regime-shift detection for scientific data. Advised by Prof. Xueying Tang.
           </p>
           <div class="actions" aria-label="Profile links">
             <a class="button" href="assets/Yulong_Zhao_CV_2026.pdf">Download CV</a>
@@ -41,11 +41,11 @@
           <dl>
             <div>
               <dt>Current Focus</dt>
-              <dd>Sequential behavioral data and interpretable statistical modeling</dd>
+              <dd>Event-sequence modeling, real-time risk scoring, interpretable machine learning</dd>
             </div>
             <div>
               <dt>Methods</dt>
-              <dd>Sparse modeling, latent variables, time-varying effects</dd>
+              <dd>Sequence models (GRU, TCN, Transformer), sparse regression, latent-state models, calibration</dd>
             </div>
             <div>
               <dt>Education</dt>
@@ -66,20 +66,20 @@
         </div>
         <div class="interest-list">
           <div>
-            <h3>Statistical Modeling for Sequential Data</h3>
-            <p>Models for irregular event logs, action sequences, and time-indexed behavioral measurements.</p>
+            <h3>Modeling User Event Sequences</h3>
+            <p>Models for timestamped event logs and action sequences that show which actions matter, and when.</p>
           </div>
           <div>
-            <h3>Interpretable High-Dimensional Modeling</h3>
-            <p>Sparse regression, structured regularization, and readable effect estimates for complex predictors.</p>
+            <h3>Real-Time Risk Scoring and Alerting</h3>
+            <p>Streaming prediction from partial sequences, with alert rules calibrated to a preset false-alarm budget.</p>
           </div>
           <div>
-            <h3>Latent Variable Models for Behavioral Data</h3>
-            <p>Methods for recovering hidden behavioral structure from observed actions and response patterns.</p>
+            <h3>Latent Traits and Hidden States</h3>
+            <p>Sparse latent-variable and hidden Markov models that recover the user traits and states behind observed behavior.</p>
           </div>
           <div>
-            <h3>Time-Varying Effects and Uncertainty</h3>
-            <p>Estimation and validation strategies for effects that change across time, sequence position, or context.</p>
+            <h3>Forecasting and Robust Validation</h3>
+            <p>Leakage-free time-series forecasting, regime-shift detection, bootstrap, and simulation-based checks.</p>
           </div>
         </div>
       </section>
@@ -92,53 +92,88 @@
 
         <article class="project-row">
           <div class="project-card project-summary">
-            <h3>Modeling Human Action Sequences</h3>
-            <p class="meta">Scalar-on-process modeling, sparse learning, behavioral event logs</p>
+            <h3>Real-Time Early Warning with a Controlled False-Alarm Rate</h3>
+            <p class="meta">Streaming risk scoring, sequence models, threshold calibration</p>
           </div>
           <div class="project-card project-detail">
             <p>
-            Built a model for variable-length action logs using B-spline bases and adaptive Group LASSO.
-            The analysis modeled 19,346 action events from 2,685 participants and improved repeated-holdout
-            mean test accuracy from 93.22% to 96.20% over a frequency-only baseline.
+            Built a streaming risk-scoring system that reads each user's partial action sequence and decides
+            when to flag users heading toward failure, with alert thresholds calibrated on the deployed trigger
+            rule so false alarms stay within a preset budget (&le;5%). Across about 370 configurations (GRU,
+            GRU with attention, temporal CNN, causal Transformer, and leakage-free logistic baselines) on three
+            interactive tasks, the best temporal-CNN model caught 98.9% of failing users at precision &ge;0.98,
+            with false alarms at or below 4% on every task.
             </p>
           </div>
         </article>
 
         <article class="project-row">
           <div class="project-card project-summary">
-            <h3>Latent Structure in Sequential Behavioral Data</h3>
-            <p class="meta">Latent variables, simulation design, sparse selection, reproducible evaluation</p>
+            <h3>Time-Aware Modeling of User Event Sequences</h3>
+            <p class="meta">Functional regression, adaptive group LASSO, interpretable prediction</p>
           </div>
           <div class="project-card project-detail">
             <p>
-            Developed a Python research pipeline for latent-state sequence models, weak supervision,
-            sparse regularization, refitting, and validation on simulated and real behavioral data.
-            The work emphasizes method comparison, identifiability, uncertainty, and failure-mode analysis.
+            Developed an interpretable model for timestamped event logs that tests, for each action, whether its
+            effect on the outcome is absent, constant, or depends on when it happens. On 19,089 events from 2,668
+            users, it raised cross-validated accuracy from 93.5% to 96.1% and halved log loss (0.237 to 0.118)
+            compared with a count-feature baseline, winning on all 10 folds. The gain comes from actions whose
+            effect flips sign with timing, such as early exploration versus a final choice.
             </p>
           </div>
         </article>
 
         <article class="project-row">
           <div class="project-card project-summary">
-            <h3>Climate Signals and Extinction-Event Modeling</h3>
-            <p class="meta">Scientific time series, proxy alignment, regularized prediction</p>
+            <h3>Latent User-Segment and Hidden-State Modeling</h3>
+            <p class="meta">Hidden Markov models, EM, sparse model selection, HPC</p>
           </div>
           <div class="project-card project-detail">
             <p>
-            Aligned environmental and geochemical proxy measurements to a shared time scale, engineered lag
-            and rolling-window features, and compared LASSO, Elastic Net, Random Forest, XGBoost, and SVR
-            models for interpretable early-warning analysis.
+            Designed sparse latent-variable sequence models that combine persistent binary user traits with
+            evolving hidden states, identifying which traits drive action choice, interface choice, and state
+            transitions for 1,340 users of a multi-app task. Implemented a custom forward&ndash;backward EM in
+            Python with model selection over up to 64 structures, ran 580+ HPC jobs, and sped up the EM core
+            by up to 3.7&times; with NumPy/Numba while keeping results bitwise identical.
+            </p>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-card project-summary">
+            <h3>Time-Series Forecasting and Regime-Shift Detection</h3>
+            <p class="meta">Walk-forward forecasting, surrogate testing, IMSI interdisciplinary cluster</p>
+          </div>
+          <div class="project-card project-detail">
+            <p>
+            Built a walk-forward forecasting pipeline (RBF-SVR, time-ordered tuning, no look-ahead) that beat
+            the historical-mean baseline in 18 of 18 settings, with 38% lower mean squared error on average.
+            Developed a regime-shift detector across 28 environmental series pairs, tested against 4,999
+            autocorrelation-preserving surrogates with Holm correction, and stress-tested findings under 49
+            data perturbations.
             </p>
           </div>
         </article>
       </section>
 
-      <section id="presentation" class="section-band compact-section">
+      <section id="publications" class="section-band compact-section">
         <div class="section-heading">
-          <p class="eyebrow">Presentation</p>
-          <h2>Recent research presentation</h2>
+          <p class="eyebrow">Publications and Talks</p>
+          <h2>Papers and presentations</h2>
         </div>
         <div class="presentation-row">
+          <div class="presentation-card presentation-summary">
+            <h3>Manuscript</h3>
+            <p class="meta">To be submitted to Psychometrika</p>
+          </div>
+          <div class="presentation-card presentation-detail">
+            <p class="presentation">
+            <strong>Zhao, Y.</strong>, &amp; Tang, X. Scalar-on-Process Model for Educational Assessment:
+            Modeling Time-Varying Action Effects with Group LASSO Regularization.
+            </p>
+          </div>
+        </div>
+        <div class="presentation-row" style="margin-top: 16px;">
           <div class="presentation-card presentation-summary">
             <h3>Refereed Oral Presentation</h3>
             <p class="meta">Symposium on Data Science and Statistics</p>
